@@ -1,0 +1,52 @@
+﻿@model Online_hotel_booking_system.Models.Accounts
+
+@{
+    ViewBag.Title = "Login Page";
+}
+
+<h2>Index</h2>
+<div>
+    @using (Html.BeginForm("Login_post", "Index", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        if (ViewBag.Message == null)
+        {
+            <div id="error" style="border:1px solid red;display:none">
+                @ViewBag.Message
+            </div>
+
+
+            <table>
+                <tr>
+                    <td>
+                        @Html.Label("Email", "Email")
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(input => input.EmailID, new { @class = "form_control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Password", "Password")
+                    </td>
+                    <td>
+                        @Html.PasswordFor(input => input.Password, new { @class = "form_control" })
+                    </td>
+                </tr>
+                <tr class="col-md-offset-2 col-md-10">
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+
+                </tr>
+
+            </table>
+            <div class="col-md-offset-2 col-md-10">
+
+                Do not have a account? @Html.ActionLink("New User", "Sign_Up")
+
+            </div>
+        }
+    }
+
+</div>
